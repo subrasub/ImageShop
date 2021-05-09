@@ -1,0 +1,63 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import 'bootstrap';
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.page-container {
+  margin: 0px;
+  padding: 0px;
+  max-width: 100%;
+}
+
+.title-card {
+  background-color: #6bab90;
+  color: #fefeff;
+  text-align: center;
+  margin: 0px;
+  .title-text {
+    font-size: 4em;
+  }
+}
+
+.home-page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #b6b6b6;
+  color: white;
+}
+
+.store-page {
+  width: 100%;
+  height: 100%;
+}
+
+.store-container {
+  background-color: #FFF;
+  width: 100%;
+  padding: 2.5em;
+}
+
+.info-page {
+  width: 100vw;
+  height: 100vh;
+}
+
+.link-container {
+  padding-left: 1em;
+  padding-top: 0.25em;
+  background-color: #6bab90;
+  .link {
+      color: #FFF;
+  }
+  .active {
+      color: rgba(255,255,255,0.75);
+  }
+  .link:active {
+      color: rgba(255,255,255,0.75)
+  }
+}

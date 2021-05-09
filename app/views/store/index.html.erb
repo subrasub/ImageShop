@@ -1,0 +1,35 @@
+<div class="store-container">
+    <div class="row">
+        <div class="col-12">
+          <%= form_tag(search_path, method: "get", remote: true) do%>
+            <div class="input-group mb-5">
+              <div class="col-8" style="padding:0">
+                  <%= text_field_tag :search, '', class:'form-control', placeholder: 'Search...', onkeydown:'clickSubmit();'%>
+              </div>
+              <div class="col-4">
+                <%= select_tag "filter", options_for_select([
+                    'Select Filter',
+                    'Collectibles',
+                    'Pictures',
+                    'Art',
+                    'Sports']), class:'custom-select', onchange:'clickSubmit()'
+                  %>
+              </div>
+              <div class="col-1">
+                <%= submit_tag 'Search', class: 'btn btn-dark', id: 'search_submit', style: 'display: none;'%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+    <div id="store-products-container">
+      <%= render 'store/products' %>
+    </div>
+</div>
+
+<script>
+  function clickSubmit() {
+    console.log('key was pressed');
+    document.getElementById("search_submit").click();
+  }
+</script>

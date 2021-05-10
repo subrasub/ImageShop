@@ -1,21 +1,31 @@
 <div class="row">
-  <% @cats.each do |cat| %>
-    <%# <%= image_tag(cat.products.image, class:'img-fluid')%>
-    <div class="col-12">
-        <h1 style="text-align:center;"><%= cat.heading %></h1>
-        <hr />
-    </div>
+  <% if @products.any? == false %>
+    <h2>Sorry, no items are available for that </h2>
+  <% else %>
+    <% if user_signed_in? == false %>
+    <h2>Please log in or create an account to purchase.</h2>
+    <% end %>
+
     <% @products.each do |product| %>
-      <% if product.category == cat %>
-        <div class="col-4">
+      <div class='col-4' style="padding: 5px;" >
+        <div class="card" style="width: 18rem;">
+          <a class="card-img-top" src="..." alt="card_image">
             <%= image_tag(product.image, class:'img-fluid', style: 'widht:150px;') %>
-            <h5><%= product.name %></h5>
-            <p>
-                <%= product.description%>
-            </p>
-            <%= product.price %></span>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title"><%=product.name%></h5>
+            <p class="card-text"><%=product.description%></p>
+            <p class="card-text">$<%=product.price%></p>
+            <% if user_signed_in? %>
+                <%= form_with model: @order_item do |f| %>
+                  <%= f.hidden_field :product_id, value: product.id %>
+                  <%= f.number_field :quantity, value: 1, min: 1%>
+                  <%= f.submit "Add to cart", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
+          </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -57,15 +57,6 @@
     <%= form.check_box :available %>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.select :category, options_from_collection_for_select(Category.all, :id, :heading, @product.category.heading) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :available %>
-    <%= form.check_box :available %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

@@ -1,14 +1,25 @@
 <div class="col-2">
     <h5 class="link-container">
-        <%= link_to "Home", root_path, class: "link #{@page == 'home' ? 'active' : ''}" %>
+        <%= link_to "Store", root_path, class: "link #{@page == 'home' ? 'active' : ''}" %>
     </h5>
     <h5 class="link-container">
-        <%= link_to "All Products", store_path, class: "link #{@page == 'menu' ? 'active' : ''}" %>
+        <%= link_to "Inventory", products_path, class: "link #{@page == 'store' ? 'active' : ''}" %>
     </h5>
     <h5 class="link-container">
         <%= link_to "More Info", info_path, class: "link #{@page == 'info' ? 'active' : ''}" %>
     </h5>
-    <h5 class="link-container">
-        <%= link_to "Customer Reviews", "", class: "link #{@page == 'reviews' ? 'active' : ''}" %>
-    </h5>
+    <% if current_user %>
+      <h5 class="link-container">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "link active" %>
+      </h5>
+
+    <% else %>
+      <h5 class="link-container">
+          <%= link_to "Log In", new_user_session_path, class: "link active" %>
+      </h5>
+      <h5 class="link-container">
+          <%= link_to "Sign Up", new_user_registration_path, class: "link active" %>
+      </h5>
+    <% end %>
+
 </div>

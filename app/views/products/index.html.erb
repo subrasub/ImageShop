@@ -2,40 +2,27 @@
 
 <h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Collectibles</th>
-      <th>Pictures</th>
-      <th>Art</th>
-      <th>Sports</th>
-      <th>Available</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<hr>
+<h3>Add a new product </h3>
+<%= link_to 'New Product', new_product_path, class: "btn btn-primary" %>
+<hr>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.collectibles %></td>
-        <td><%= product.pictures %></td>
-        <td><%= product.art %></td>
-        <td><%= product.sports %></td>
-        <td><%= product.available %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @products.each do |product| %>
+  <div style="padding: 5px;" >
+    <div class="card" style="width: 18rem;">
+      <a class="card-img-top" src="..." alt="card_image">
+        <%= image_tag(product.image, style:"max-height: 100px; max-width: 100px;") %>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title"><%=product.name%></h5>
+        <p class="card-text"><%=product.description%></p>
+        <p class="card-text">$<%=product.price%></p>
+        <%= link_to 'Show', product, class: "btn btn-primary"%>
+        <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
+        <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <br>
-
-<%= link_to 'New Product', new_product_path %>

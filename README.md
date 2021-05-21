@@ -9,7 +9,3 @@ Online marketplace to sell pictures/art/collectibles
 3. Install and start Postgres
 4. Run `rake db:setup`
 5. Run `rails s` and head over to `localhost:3000`
-
-
-## Notes
-Built for Shopify Fall 2021 backend challenge
